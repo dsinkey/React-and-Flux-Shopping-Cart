@@ -17,3 +17,5 @@ var FluxCartApp = React.createClass({
     )
   }
 });
+
+module.exports = FluxCartApp;
