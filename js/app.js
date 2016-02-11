@@ -1,7 +1,7 @@
 window.React = require('react');
 var ProductData = require('./ProductData.js');
 var CartAPI = require('./utils/CartAPI.js');
-var FluxCartApp = require('./components/FluxCartApp.js');
+var FluxCartApp = require('./components/FluxCartApp.react.js');
 
 ProductData.init();
 

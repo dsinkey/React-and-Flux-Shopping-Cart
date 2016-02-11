@@ -1,5 +1,4 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('event').EventEmitter;
 var FluxCartConstants = require('../constants/FluxCartConstants');
 var _ = require('underscore');
 
@@ -15,7 +14,7 @@ var ProductStore = {
   getProduct: function(){
     return product;
   }
-  
-});
+
+};
 
 module.exports = ProductStore;
