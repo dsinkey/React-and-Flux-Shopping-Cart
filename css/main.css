@@ -1,0 +1,38 @@
+.flux-product {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+
+    border: 5px solid #2c3350;
+    background: white; 
+}
+
+.flux-product img {
+    width: 50%;
+
+    border: 2px solid #ddd;
+}
+
+.flux-product-detail {
+    width: 50%;
+    padding: 0 20px;
+}
+
+button {
+    font-size: 16px;
+    font-weight: bold;
+
+    display: block;
+
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 30px;
+
+    color: white;
+    border: 0;
+    border-radius: 3px;
+    outline: none;
+    background: #2ecc71;
+    box-shadow: 0 5px 1px #27ae60;
+}
