@@ -5,14 +5,15 @@
     padding: 20px;
 
     border: 5px solid #2c3350;
-    background: white; 
+    background: white;
 }
 
 .flux-product img {
-    width: 50%;
+    width: 45%;
 
     border: 2px solid #ddd;
 }
+
 .flux-product img,
 .flux-product-detail {
     display: inline-block;
@@ -20,7 +21,7 @@
 }
 
 .flux-product-detail {
-    width: 50%;
+    width: 45%;
     padding: 0 20px;
 }
 
