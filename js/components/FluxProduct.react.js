@@ -2,6 +2,13 @@ var React = require('react');
 var FluxCartActions = require('../actions/FluxCartActions.js');
 
 var FluxProduct = React.createClass({
+  addToCart: function(event){
+    var update = {
+      name: this.props.product.name
+    }
+    FluxCartActions.addToCart(update);
+  },
+
   render: function(){
     return(
       <div className="flux-product">
@@ -10,7 +17,7 @@ var FluxProduct = React.createClass({
           <h1 className="name">{this.props.product.name}</h1>
           <p className="description">{this.props.product.description}</p>
           <p className="price">{this.props.product.price}</p>
-          <button type="button">Add to Cart</button>
+          <button type="button" onClick={this.addToCart}>Add to Cart</button>
         </div>
       </div>
     )
