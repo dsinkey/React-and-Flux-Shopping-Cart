@@ -9,6 +9,10 @@ var FluxProduct = React.createClass({
     FluxCartActions.addToCart(update);
   },
 
+  selectVariant: function(event){
+    FluxCartActions.selectProduct(event.target.value);
+  },
+
   render: function(){
     return(
       <div className="flux-product">
@@ -17,10 +21,10 @@ var FluxProduct = React.createClass({
           <h1 className="name">{this.props.product.name}</h1>
           <p className="description">{this.props.product.description}</p>
           <p className="price">{this.props.product.price}</p>
-          <select>
+          <select onChange={this.selectVariant}>
             {this.props.product.variants.map(function(variant, index){
               return (
-                <option>{variant.type}</option>
+                <option key={index} value={index} >{variant.type}</option>
               )
             })}
           </select>
