@@ -14,7 +14,15 @@ var FluxCartActions = {
       actionType: FluxCartConstants.CART_ADD,
       update: update
     });
-  }
+  },
+
+  setSelected: function(index){
+    AppDispatcher.handleAction({
+      actionType: FluxCartConstants.SELECT_PRODUCT,
+      data: index
+    });
+  },
+
 };
 
 module.exports = FluxCartActions;

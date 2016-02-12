@@ -6,17 +6,23 @@ var product = {};
 var selected = null;
 
 function loadProductData(data){
-  console.log("This is from Product Store: ");
-  console.log(data);
-
   product = data[0];
   selected = data[0].variants[0];
-}
+};
+
+function setSelected(index){ 
+  selected = product.variants[index];
+};
+
 
 var ProductStore = {
   getProduct: function(){
     return product;
-  }
+  },
+
+  getSelected: function(){
+    return selected;
+  },
 
 };
 
@@ -25,6 +31,8 @@ AppDispatcher.register(function(payload){
   
   switch(action.actionType){
     case FluxCartConstants.RECEIVE_DATA: loadProductData(action.data);
+      break;
+    case FluxCartConstants.SELECT_PRODUCT: setSelected(action.data);
       break;
   }
 
