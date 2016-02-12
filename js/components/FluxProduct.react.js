@@ -17,6 +17,13 @@ var FluxProduct = React.createClass({
           <h1 className="name">{this.props.product.name}</h1>
           <p className="description">{this.props.product.description}</p>
           <p className="price">{this.props.product.price}</p>
+          <select>
+            {this.props.product.variants.map(function(variant, index){
+              return (
+                <option>{variant.type}</option>
+              )
+            })}
+          </select>
           <button type="button" onClick={this.addToCart}>Add to Cart</button>
         </div>
       </div>
