@@ -1,4 +1,5 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var EventEmitter = require('events').EventEmitter;
 var FluxCartConstants = require('../constants/FluxCartConstants.js');
 var _ = require('underscore');
 
@@ -14,12 +15,28 @@ function setCartVisible(cartVisible){
   cartVisible = cartVisible;
 }
 
-var CartStore = {
+var CartStore = _.extend({}, EventEmitter.protoptype, {
+  getCartItems: function(){
+    return products;
+  },
 
   getCartVisible: function(){
     return cartVisible;
+  },
+
+  emitChange: function(){
+    this.emit('change');
+  },
+
+  addChangeListener: function(callback){
+    this.on('change', callback);
+  },
+
+  removeChangeListener: function(callback){
+    this.removeListener('change', callback);
   }
-}
+
+});
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
@@ -27,5 +44,15 @@ AppDispatcher.register(function(payload){
   switch(action.actionType){
     case FluxCartConstants.CART_VISIBLE: setCartVisible(action.cartVisible);
       break;
+    case FluxCartConstants.CART_ADD: add(action.sku, action.upadte);
+      break;
+    default:
+      return true;
   }
+
+  CartStore.emitChange();
+
+  return true;
 });
+
+module.exports = CartStore;

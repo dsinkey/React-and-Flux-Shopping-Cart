@@ -4,6 +4,6 @@ module.exports = keyMirror({
     RECEIVE_DATA: null,
     CART_ADD: null,
     CART_REMOVE: null,
-    CART_VISIBLE: null,
+    CART_VISIBLE: true,
     SELECT_PRODUCT: null
 });

@@ -65,6 +65,16 @@ button:hover {
     box-shadow: 0 5px 1px #145b32;
 }
 
+button.view-cart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .mini-cart {
     position: absolute;
     z-index: 999;
@@ -102,4 +112,18 @@ button:hover {
     list-style-type: none;
 
     border-bottom: 1px solid #ddd;
+}
+
+.mini-cart .close-cart {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: auto;
+    margin: 0;
+    padding: 0 5px 3px;
+
+    color: white;
+    background: #2c3e50;
+    box-shadow: none; 
 }
