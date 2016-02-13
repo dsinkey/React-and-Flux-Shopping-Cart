@@ -4,7 +4,7 @@ var EventEmitter = require('events').EventEmitter;
 var _ = require('underscore');
 
 var product = {};
-var selected = {sku: '123123'};
+var selected = null;
 
 function loadProductData(data){
   product = data[0];
