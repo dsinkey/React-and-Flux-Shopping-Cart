@@ -34,6 +34,9 @@ AppDispatcher.register(function(payload){
       break;
     case FluxCartConstants.SELECT_PRODUCT: setSelected(action.data);
       break;
+
+    default:
+      return true;
   }
 
 });
