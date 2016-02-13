@@ -25,7 +25,7 @@ var FluxCartActions = {
 
   updateCartVisible: function(cartVisible){
     AppDispatcher.handleAction({
-      actionType: FluxCartConstants:CART_VISIBLE,
+      actionType: FluxCartConstants.CART_VISIBLE,
       cartVisible: cartVisible
     });
   }

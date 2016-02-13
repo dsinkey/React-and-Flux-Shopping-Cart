@@ -7,6 +7,7 @@ var FluxProduct = React.createClass({
       name: this.props.product.name
     }
     FluxCartActions.addToCart(update);
+    FluxCartActions.updateCartVisible(true);
   },
 
   selectVariant: function(event){
