@@ -9,6 +9,13 @@ var FluxCartActions = {
     })
   },
 
+  selectProduct: function(index){
+    AppDispatcher.handleAction({
+      actionType: FluxCartConstants.SELECT_PRODUCT,
+      data: index
+    });
+  },
+
   addToCart: function(update){
     AppDispatcher.handleAction({
       actionType: FluxCartConstants.CART_ADD,
@@ -16,12 +23,13 @@ var FluxCartActions = {
     });
   },
 
-  setSelected: function(index){
+  updateCartVisible: function(cartVisible){
     AppDispatcher.handleAction({
-      actionType: FluxCartConstants.SELECT_PRODUCT,
-      data: index
+      actionType: FluxCartConstants:CART_VISIBLE,
+      cartVisible: cartVisible
     });
-  },
+  }
+
 
 };
 
