@@ -10,15 +10,23 @@ function getCartState(){
     selectedProduct: ProductStore.getSelected(),
     cartVisible: CartStore.getCartVisible()
   }
-}
+};
 
 var FluxCartApp = React.createClass({
   getInitialState: function(){
+    console.log(getCartState());
     return getCartState();
   },
 
   componentDidMount: function(){
     CartStore.addChangeListener(this.onChange);
+    ProductStore.addChangeListener(this.onChange);
+    console.log(this.state);
+  },
+
+  componentWillUnmount: function(){
+    CartStore.removeChangeListener(this.onChange);
+    ProductStore.removeChangeListener(this.onChange);
   },
 
   render: function(){
@@ -29,7 +37,7 @@ var FluxCartApp = React.createClass({
       </div>
     )
   },
-  
+
   onChange: function() {
     this.setState(getCartState());
   }

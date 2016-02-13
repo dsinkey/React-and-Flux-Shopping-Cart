@@ -4,7 +4,7 @@ var FluxCartConstants = require('../constants/FluxCartConstants.js');
 var _ = require('underscore');
 
 var products = {};
-var cartVisible = false;
+var cartVisible = null;
 
 function add(sku, update){
   update.quantity = sku in products ? products[sku].quantity + 1 : 1;
@@ -15,7 +15,7 @@ function setCartVisible(cartVisible){
   cartVisible = cartVisible;
 }
 
-var CartStore = _.extend({}, EventEmitter.protoptype, {
+var CartStore = _.extend({}, EventEmitter.prototype, {
   getCartItems: function(){
     return products;
   },
@@ -44,7 +44,7 @@ AppDispatcher.register(function(payload){
   switch(action.actionType){
     case FluxCartConstants.CART_VISIBLE: setCartVisible(action.cartVisible);
       break;
-    case FluxCartConstants.CART_ADD: add(action.sku, action.upadte);
+    case FluxCartConstants.CART_ADD: add(action.sku, action.update);
       break;
     default:
       return true;

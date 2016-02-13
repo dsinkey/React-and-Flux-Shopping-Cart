@@ -1,5 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var FluxCartConstants = require('../constants/FluxCartConstants');
+var EventEmitter = require('events').EventEmitter;
 var _ = require('underscore');
 
 var product = {};
@@ -15,7 +16,7 @@ function setSelected(index){
 };
 
 
-var ProductStore = {
+var ProductStore = _.extend({}, EventEmitter.prototype, {
   getProduct: function(){
     return product;
   },
@@ -24,7 +25,19 @@ var ProductStore = {
     return selected;
   },
 
-};
+  emitChange: function(){
+    this.emit('change');
+  },
+
+  addChangeListener: function(callback){
+    this.on('change', callback);
+  },
+
+  removeChangeListener: function(callback){
+    this.removeListener('change', callback);
+  }
+
+});
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
@@ -39,6 +52,9 @@ AppDispatcher.register(function(payload){
       return true;
   }
 
+  ProductStore.emitChange();
+
+  return true;
 });
 
 module.exports = ProductStore;
