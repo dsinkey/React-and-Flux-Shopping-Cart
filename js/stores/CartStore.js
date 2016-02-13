@@ -1,5 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var FluxCartConstants = require('../constants/FluxCartConstants.js');
+var _ = require('underscore');
 
 var products = {};
 var cartVisible = false;

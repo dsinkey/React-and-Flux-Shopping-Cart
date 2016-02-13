@@ -15,7 +15,7 @@ var FluxCartApp = React.createClass({
     return (
       <div>
         <FluxProduct product={this.state.product} />
-        <FluxCart product={this.state.product} />
+        <FluxCart />
       </div>
     )
   }
