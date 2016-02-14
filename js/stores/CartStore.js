@@ -7,9 +7,6 @@ var _products = {};
 var _cartVisible = false;
 
 function add(sku, update){
-  console.log('CartStore add function');
-  console.log(sku);
-  console.log(update);
   update.quantity = sku in _products ? _products[sku].quantity + 1 : 1;
   _products[sku] = _.extend({}, _products[sku], update);
 };
@@ -21,6 +18,10 @@ function setCartVisible(cartVisible){
 var CartStore = _.extend({}, EventEmitter.prototype, {
   getCartItems: function(){
     return _products;
+  },
+
+  getCartCount: function(){
+    return Object.keys(_products).length;
   },
 
   getCartVisible: function(){
