@@ -11,7 +11,7 @@ function add(sku, update){
   console.log(sku);
   console.log(update);
   update.quantity = sku in _products ? _products[sku].quantity + 1 : 1;
-  products[sku] = _.extend({}, _products[sku], update);
+  _products[sku] = _.extend({}, _products[sku], update);
 };
 
 function setCartVisible(cartVisible){
@@ -49,8 +49,8 @@ AppDispatcher.register(function(payload){
     case FluxCartConstants.CART_VISIBLE: setCartVisible(action.cartVisible);
       break;
     case FluxCartConstants.CART_ADD: add(action.sku, action.update);
-      console.log(actions.sku);
-      console.log(actions.update);
+      console.log(action.sku);
+      console.log(action.update);
       break;
     default:
       return true;

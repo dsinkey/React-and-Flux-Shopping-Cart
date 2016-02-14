@@ -1,8 +1,16 @@
+html, body {
+    height: 100%;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
 section#flux-cart {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: visible;
     margin: auto;
     padding: 20px;
     position: relative;  
@@ -35,6 +43,10 @@ section#flux-cart {
     padding: 0 20px;
 }
 
+h1 {
+    color: #2c3350;
+}
+
 select {
     font-size: 24px;
     display: block;
@@ -65,6 +77,11 @@ button:hover {
     box-shadow: 0 5px 1px #145b32;
 }
 
+button:active{
+    border-top: 5px solid white;
+    box-shadow: none;
+}
+
 button.view-cart {
     position: absolute;
     top: 20px;
@@ -83,6 +100,8 @@ button.view-cart {
 
     width: 100%;
     max-width: 280px;
+
+    transition: .25s right ease;
 
     background: white;
     box-shadow: 0 0 5px rgba(0,0,0,.5);
@@ -127,3 +146,16 @@ button.view-cart {
     background: #2c3e50;
     box-shadow: none; 
 }
+
+.mini-cart span.total {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+
+    color: white;
+    background: #2c3e50;
+}
+
+
