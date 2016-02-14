@@ -7,12 +7,14 @@ var _products = {};
 var _cartVisible = false;
 
 function add(sku, update){
+  console.log('CartStore add function');
+  console.log(sku);
+  console.log(update);
   update.quantity = sku in _products ? _products[sku].quantity + 1 : 1;
   products[sku] = _.extend({}, _products[sku], update);
 };
 
 function setCartVisible(cartVisible){
-  console.log("setCartVisible called " + cartVisible);
   _cartVisible = cartVisible;
 }
 
@@ -41,12 +43,14 @@ var CartStore = _.extend({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
+  console.log(action);
 
   switch(action.actionType){
     case FluxCartConstants.CART_VISIBLE: setCartVisible(action.cartVisible);
-    console.log('AppDispatcher cartVisible');
       break;
     case FluxCartConstants.CART_ADD: add(action.sku, action.update);
+      console.log(actions.sku);
+      console.log(actions.update);
       break;
     default:
       return true;

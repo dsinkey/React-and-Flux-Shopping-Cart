@@ -9,9 +9,10 @@ var FluxProduct = React.createClass({
     var sku = this.props.selected.sku;
     var update = {
       name: this.props.product.name,
-      type: this.props.selected.type
+      type: this.props.selected.type,
+      price: this.props.selected.price 
     }
-
+    console.log(update);
     FluxCartActions.addToCart(update);
     FluxCartActions.updateCartVisible(true);
   },
