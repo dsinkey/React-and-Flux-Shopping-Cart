@@ -24,14 +24,18 @@ var FluxCartActions = {
   },
 
   updateCartVisible: function(cartVisible){
-    console.log(cartVisible);
     AppDispatcher.handleAction({
       actionType: FluxCartConstants.CART_VISIBLE,
       cartVisible: cartVisible
     });
+  },
+
+  removeFromCart: function(sku){
+    AppDispatcher.handleAction({
+      actionType: FluxCartConstants.CART_REMOVE,
+      sku: sku
+    });
   }
-
-
 };
 
 module.exports = FluxCartActions;

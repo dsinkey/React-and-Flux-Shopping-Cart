@@ -22,6 +22,7 @@ var FluxProduct = React.createClass({
 
   render: function(){
     var attrs = (this.props.selected.sku in this.props.cartitems) ? this.props.selected.inventory - this.props.cartitems[this.props.selected.sku].quantity : this.props.selected.inventory;
+    console.log(attrs);
 
     return(
       <div className="flux-product">

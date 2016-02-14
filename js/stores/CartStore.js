@@ -13,6 +13,10 @@ function add(sku, update){
 
 function setCartVisible(cartVisible){
   _cartVisible = cartVisible;
+};
+
+function removeItem(sku){
+  delete _products[sku];
 }
 
 var CartStore = _.extend({}, EventEmitter.prototype, {
@@ -22,6 +26,17 @@ var CartStore = _.extend({}, EventEmitter.prototype, {
 
   getCartCount: function(){
     return Object.keys(_products).length;
+  },
+
+  getCartTotal: function(){
+    var total = 0;
+    for(product in _products){
+      if(_products.hasOwnProperty(product)){
+        total += _products[product].price * _products[product].quantity;
+      }
+    }
+
+    return total.toFixed(2);
   },
 
   getCartVisible: function(){
@@ -44,14 +59,13 @@ var CartStore = _.extend({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
-  console.log(action);
 
   switch(action.actionType){
     case FluxCartConstants.CART_VISIBLE: setCartVisible(action.cartVisible);
       break;
     case FluxCartConstants.CART_ADD: add(action.sku, action.update);
-      console.log(action.sku);
-      console.log(action.update);
+      break;
+    case FluxCartConstants.CART_REMOVE: removeItem(action.sku);
       break;
     default:
       return true;
