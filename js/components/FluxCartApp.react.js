@@ -8,20 +8,19 @@ function getCartState(){
   return{
     product: ProductStore.getProduct(),
     selectedProduct: ProductStore.getSelected(),
-    cartVisible: CartStore.getCartVisible()
+    cartVisible: CartStore.getCartVisible(),
+    cartItems: CartStore.getCartItems()
   }
 };
 
 var FluxCartApp = React.createClass({
   getInitialState: function(){
-    console.log(getCartState());
     return getCartState();
   },
 
   componentDidMount: function(){
     CartStore.addChangeListener(this.onChange);
     ProductStore.addChangeListener(this.onChange);
-    console.log(this.state);
   },
 
   componentWillUnmount: function(){
@@ -32,8 +31,8 @@ var FluxCartApp = React.createClass({
   render: function(){
     return (
       <div className="flux-cart-app">
-        <FluxCart visible={this.state.cartVisible}/>
-        <FluxProduct product={this.state.product} selected={this.state.selectedProduct}/>
+        <FluxCart products={this.state.cartItems} visible={this.state.cartVisible}/>
+        <FluxProduct product={this.state.product} cartitems={this.state.cartItems} selected={this.state.selectedProduct}/>
       </div>
     )
   },

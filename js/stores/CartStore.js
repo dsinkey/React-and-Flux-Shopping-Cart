@@ -3,12 +3,12 @@ var EventEmitter = require('events').EventEmitter;
 var FluxCartConstants = require('../constants/FluxCartConstants.js');
 var _ = require('underscore');
 
-var products = {};
-var _cartVisible = null;
+var _products = {};
+var _cartVisible = false;
 
 function add(sku, update){
-  update.quantity = sku in products ? products[sku].quantity + 1 : 1;
-  products[sku] = _.extend({}, products[sku], update);
+  update.quantity = sku in _products ? _products[sku].quantity + 1 : 1;
+  products[sku] = _.extend({}, _products[sku], update);
 };
 
 function setCartVisible(cartVisible){
@@ -18,7 +18,7 @@ function setCartVisible(cartVisible){
 
 var CartStore = _.extend({}, EventEmitter.prototype, {
   getCartItems: function(){
-    return products;
+    return _products;
   },
 
   getCartVisible: function(){

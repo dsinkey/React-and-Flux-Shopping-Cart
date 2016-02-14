@@ -8,8 +8,10 @@ var FluxProduct = React.createClass({
     console.log(this.props);
     var sku = this.props.selected.sku;
     var update = {
-      name: this.props.product.name
+      name: this.props.product.name,
+      type: this.props.selected.type
     }
+
     FluxCartActions.addToCart(update);
     FluxCartActions.updateCartVisible(true);
   },
@@ -19,6 +21,8 @@ var FluxProduct = React.createClass({
   },
 
   render: function(){
+    var attrs = (this.props.selected.sku in this.props.cartitems) ? this.props.selected.inventory - this.props.cartitems[this.props.selected.sku].quantity : this.props.selected.inventory;
+
     return(
       <div className="flux-product">
         <img src={'img/' + this.props.product.image}></img>
@@ -33,7 +37,7 @@ var FluxProduct = React.createClass({
               )
             })}
           </select>
-          <button type="button" onClick={this.addToCart}>Add to Cart</button>
+          <button type="button" onClick={this.addToCart} disabled={attrs > 0 ? '' : 'disabled'}>{attrs > 0 ? 'Add To Cart' : 'Sold Out'}</button>
         </div>
       </div>
     )
